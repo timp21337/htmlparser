@@ -21,6 +21,15 @@
  * Version: 1.03
  * Revision: $Id$
  *
+ */
+
+options { IGNORE_CASE = true; STATIC = false; } 
+
+PARSER_BEGIN(HtmlParser)
+
+package com.quiotix.html.parser;
+
+/**
  * This grammar parses an HTML document and produces a (flat) parse "tree" 
  * representing the document.  It preserves almost all information in the
  * source document, including carriage control and spacing (except inside
@@ -42,13 +51,6 @@
  * Please direct comments, questions, gripes or praise to 
  * html-parser@quiotix.com.  If you like it/hate it/use it, please let us know!  
  */
-
-options { IGNORE_CASE = true; STATIC = false; } 
-
-PARSER_BEGIN(HtmlParser)
-
-package com.quiotix.html.parser;
-
 public class HtmlParser {
 
   final static String NL = System.getProperty("line.separator");
