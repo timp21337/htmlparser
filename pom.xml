@@ -22,8 +22,8 @@ It is not confused by things that look like tags inside of quoted strings.
     <developer>
       <id>briang</id>
       <name>Brian Goetz</name>
-      <email>html-parser@quiotix.com</email>
-      <url>http://www.qiotix.com/~briang</url>
+      <email>html-parser AT quiotix.com</email>
+      <url>http://www.quiotix.com/~brian</url>
       <organization>Quiotix</organization>
       <roles>
         <role>Developer</role>
@@ -33,7 +33,7 @@ It is not confused by things that look like tags inside of quoted strings.
     <developer>
       <id>timp</id>
       <name>Tim Pizey</name>
-      <email>timp@context-computing.co.uk</email>
+      <email>timp AT context-computing.co.uk</email>
       <url>http://www.context-computing.co.uk/~timp</url>
       <organization>Context Computing</organization>
       <roles>
@@ -195,10 +195,10 @@ It is not confused by things that look like tags inside of quoted strings.
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jcoverage-maven-plugin</artifactId>
       </plugin -->
-      <plugin>
+      <!--plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>cobertura-maven-plugin</artifactId>
-      </plugin>
+      </plugin-->
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>taglist-maven-plugin</artifactId>
