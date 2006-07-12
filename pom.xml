@@ -68,12 +68,12 @@ It is not confused by things that look like tags inside of quoted strings.
       <scope>compile</scope>
     </dependency>
     
-    <dependency>
+    <!--dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
       <version>3.8.1</version>
       <scope>test</scope>
-    </dependency>
+    </dependency-->
   </dependencies>
   <build>
     <sourceDirectory>src/main/java</sourceDirectory>
@@ -134,8 +134,8 @@ It is not confused by things that look like tags inside of quoted strings.
           <report>dependencies</report>
           <report>project-team</report>
           <report>mailing-list</report>
-          <report>cim</report>
-          <report>issue-tracking</report>
+          <!--report>cim</report-->
+          <!--report>issue-tracking</report-->
           <report>license</report>
           <report>scm</report>
          </reports>
@@ -146,12 +146,11 @@ It is not confused by things that look like tags inside of quoted strings.
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>changelog-maven-plugin</artifactId>
       </plugin-->
-      <plugin>
+      <!--plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>surefire-report-maven-plugin</artifactId>
-        <!-- version>2.0-beta-1</version-->
         <configuration/>
-      </plugin>
+      </plugin-->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-checkstyle-plugin</artifactId>
