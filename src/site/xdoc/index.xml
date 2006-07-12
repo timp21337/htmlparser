@@ -64,18 +64,18 @@ files on your classpath and execute
 <subsection name="Using the parser">
 <p>The parser transforms an input stream into a parse tree; the elements of the
 parse tree are defined in 
-<a href="src/com/quiotix/html/parser/HtmlDocument.java">HtmlDocument</a>.
+<a href="xref/com/quiotix/html/parser/HtmlDocument.html">HtmlDocument</a>.
 You can then traverse the tree using the Visitor pattern; the base visitor is
 defined in 
-<a href="src/com/quiotix/html/parser/HtmlVisitor.java">HtmlVisitor</a>,
+<a href="xref/com/quiotix/html/parser/HtmlVisitor.html">HtmlVisitor</a>,
 and there are several visitors which are part of the HtmlParser package. 
-<a href="src/com/quiotix/html/parser/HtmlDumper.java">HtmlDumper</a>
+<a href="xref/com/quiotix/html/parser/HtmlDumper.html">HtmlDumper</a>
 is a simple visitor which traverses the parse tree and reconstructs the 
 original document and writes it to System.out; 
 it is a useful starting point for building
 your own custom visitors. 
-<a href="src/com/quiotix/html/parser/HtmlCollector.java">HtmlCollector</a>
-and <a href="src/com/quiotix/html/parser/HtmlScrubber.java">HtmlScrubber</a> 
+<a href="xref/com/quiotix/html/parser/HtmlCollector.html">HtmlCollector</a>
+and <a href="xref/com/quiotix/html/parser/HtmlScrubber.html">HtmlScrubber</a> 
 are more sophisticated visitors, which transform the parse tree.
  HtmlCollector imparts a tree structure to the otherwise flat parse tree, 
 matching begin and
@@ -102,17 +102,18 @@ walks the document and attempts to match up tags and impart more
 structure to the document.  </p>
 </subsection>
 <subsection name="Examples">
-<p><a href="examples/HtmlParse.java">HtmlParse</a> simply invokes the parser and
+<p><a href="xref/com/quiotix/html/example/HtmlParse.java">HtmlParse</a> 
+simply invokes the parser and
 dumps the resulting parse tree with HtmlDumper.  
 </p>
-<p><a href="examples/HtmlFormat.java">HtmlFormat</a>
-is an example program which uses the parser, the scrubber, and the collector to
-parse and pretty-print an HTML page and dump it to System.out.  
+<p><a href="xref/com/quiotix/html/example/HtmlFormat.java">HtmlFormat</a>
+is an example program which uses the parser, the scrubber, and the collector 
+to parse and pretty-print an HTML page and dump it to <tt>System.out</tt>.  
 </p>
 <p>
-<a href="examples/DumpLinks.java">DumpLinks</a>
-is a simple visitor which parses a document from System.in and writes out a list
-of links in the document to System.out.  
+<a href="xref/com/quiotix/html/example/DumpLinks.java">DumpLinks</a>
+is a simple visitor which parses a document from <tt>System.in</tt> and writes 
+out a list of links in the document to <tt>System.out</tt>.  
 </p>
 </subsection>
 <subsection name="Copyright">
