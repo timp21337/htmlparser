@@ -38,20 +38,20 @@ pre-built
 
 <p>The parser was written with <a href="https://javacc.dev.java.net/">JavaCC</a>,
 the Java Compiler Compiler. You do not need JavaCC unless you plan to
-modify the core parser. The parser package is built with <a href="http://jakarta.apache.org/ant">Ant</a>.
+modify the core parser. The parser package is built with <a href="http://ant.apache.org/">Ant</a>.
 To compile the package with ANT, simply execute <pre>ant</pre>
 </p>
 <p>If you have installed JavaCC and want to recompile the parser from the
 JavaCC source, also set the <tt>$JAVACC_HOME</tt> environment variable.
 </p>
 <p>
-To compile with Maven 2:
+To compile with <a href="http://maven.apache.org/">Maven</a>:
 <pre>
 mvn package
 </pre>
 </p>
 <p>
-The main()
+The <tt>main()</tt>
 method of HtmlParser will read an HTML file from System.in, parse it, and visit
 it with a Visitor which reconstructs the original file and dumps it to
 System.out. While this is not terribly useful for anything other than testing,
@@ -102,16 +102,16 @@ walks the document and attempts to match up tags and impart more
 structure to the document.  </p>
 </subsection>
 <subsection name="Examples">
-<p><a href="xref/com/quiotix/html/example/HtmlParse.java">HtmlParse</a> 
+<p><a href="xref/com/quiotix/html/example/HtmlParse.html">HtmlParse</a> 
 simply invokes the parser and
 dumps the resulting parse tree with HtmlDumper.  
 </p>
-<p><a href="xref/com/quiotix/html/example/HtmlFormat.java">HtmlFormat</a>
+<p><a href="xref/com/quiotix/html/example/HtmlFormat.html">HtmlFormat</a>
 is an example program which uses the parser, the scrubber, and the collector 
 to parse and pretty-print an HTML page and dump it to <tt>System.out</tt>.  
 </p>
 <p>
-<a href="xref/com/quiotix/html/example/DumpLinks.java">DumpLinks</a>
+<a href="xref/com/quiotix/html/example/DumpLinks.html">DumpLinks</a>
 is a simple visitor which parses a document from <tt>System.in</tt> and writes 
 out a list of links in the document to <tt>System.out</tt>.  
 </p>
