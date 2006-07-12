@@ -15,7 +15,9 @@
 
 package com.quiotix.html.parser;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * Represents an HTML document as a sequence of elements.  The defined

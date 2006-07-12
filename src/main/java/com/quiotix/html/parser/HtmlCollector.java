@@ -17,7 +17,10 @@ package com.quiotix.html.parser;
 
 import java.io.FileInputStream;
 import java.io.InputStream;
-import java.util.*;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.Vector;
 
 /**
  * An HtmlVisitor which modifies the structure of the document so that

@@ -1,7 +1,14 @@
 package com.quiotix.html.example;
-import java.io.*;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 
-import com.quiotix.html.parser.*;
+import com.quiotix.html.parser.HtmlCollector;
+import com.quiotix.html.parser.HtmlDocument;
+import com.quiotix.html.parser.HtmlDumper;
+import com.quiotix.html.parser.HtmlFormatter;
+import com.quiotix.html.parser.HtmlParser;
+import com.quiotix.html.parser.HtmlScrubber;
 
 
 /**

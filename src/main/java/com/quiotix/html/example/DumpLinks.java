@@ -1,10 +1,17 @@
 package com.quiotix.html.example;
 
-import java.util.*;
-import java.io.*;
-import com.quiotix.html.parser.*;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
+import java.util.Iterator;
+
+import com.quiotix.html.parser.HtmlDocument;
+import com.quiotix.html.parser.HtmlParser;
+import com.quiotix.html.parser.HtmlVisitor;
+import com.quiotix.html.parser.ParseException;
 import com.quiotix.html.parser.HtmlDocument.Attribute;
-import com.quiotix.html.parser.HtmlDocument.AttributeList;
 
 /** 
  * Example visitor to dump out the links from an HTML document.
