@@ -8,6 +8,10 @@
               files="TokenManager.java" />
     <suppress checks="JavadocType"
               files="TokenManager.java" />
+    <suppress checks="FileLength"
+              files="TokenManager.java" />
+    <suppress checks="MethodLength"
+              files="TokenManager.java" />
     <suppress checks="JavadocType"
               files="TokenMgrError.java" />
     <suppress checks="JavadocType"
@@ -20,6 +24,8 @@
     <suppress checks="LeftCurly"
               files="TokenMgrError.java" />
     <suppress checks="AvoidNestedBlocks"
+              files="Parser.java" />
+    <suppress checks="LeftCurly"
               files="Parser.java" />
 
 

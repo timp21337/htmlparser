@@ -36,12 +36,11 @@
         <property name="cacheFile" value="${checkstyle.cache.file}"/>
 
         <property name="tabWidth" value="2"/>
-        <module name="LeftCurly">
-          <property name="option" value="nl"/>
+        <!-- module name="LeftCurly">
+          <property name="option" value="eol"/>
           <property name="tokens"
-          value="LITERAL_FINALLY,LITERAL_SWITCH,LITERAL_SYNCHRONIZED,LITERAL_WHILE" />
-          <!-- INTERFACE_DEF,CLASS_DEF,CTOR_DEF,METHOD_DEF,LITERAL_FOR,LITERAL_TRY,LITERAL_CATCH,LITERAL_DO,-->
-        </module>
+          value="LITERAL_SWITCH,LITERAL_SYNCHRONIZED,LITERAL_WHILE,LITERAL_FINALLY,INTERFACE_DEF,CLASS_DEF,CTOR_DEF,METHOD_DEF,LITERAL_FOR,LITERAL_TRY,LITERAL_CATCH,LITERAL_DO>
+        </module -->
         <!-- module name="RightCurly">
           <property name="option" value="alone"/>
         </module -->
@@ -125,18 +124,18 @@
 
         <!-- Checks for whitespace                               -->
         <!-- See http://checkstyle.sf.net/config_whitespace.html -->
-        <module name="EmptyForIteratorPad"/>
+        <!-- module name="EmptyForIteratorPad"/-->
         <module name="NoWhitespaceAfter">
          <property name="tokens" value="TYPECAST"/>
         </module>
-        <module name="NoWhitespaceBefore"/>
+        <!-- module name="NoWhitespaceBefore"/ -->
         <!-- Bad check - sometimes the operator should be on a new
         line sometimes not -->
         <!-- module name="OperatorWrap"/ -->
         <!-- No padding -->
         <module name="TypecastParenPad"/>
         <!-- No padding -->
-        <module name="ParenPad"/>
+        <!--module name="ParenPad"/-->
         <!-- None allowed -->
         <module name="TabCharacter"/>
 
@@ -172,7 +171,7 @@
         <!-- module name="AvoidInlineConditionals"/ -->
         <module name="DoubleCheckedLocking"/>    <!-- MY FAVOURITE -->
 
-        <module name="EmptyStatement"/>
+        <!-- module name="EmptyStatement"/-->
         <module name="EqualsHashCode"/>
 
         <module name="HiddenField">
