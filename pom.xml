@@ -42,7 +42,14 @@ It is not confused by things that look like tags inside of quoted strings.
       <timezone>0</timezone>
     </developer>
   </developers>
-  <contributors/>
+  <contributors>
+   <contributor>
+    <name>Doug Reed</name>
+   </contributor>
+   <contributor>
+    <name>Thorsten Weber</name>
+   </contributor>
+  </contributors>
   <licenses>
    <license>
     <name>Gnu Public License</name>
