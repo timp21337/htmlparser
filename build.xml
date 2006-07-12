@@ -1,0 +1,74 @@
+<project name="html-parser" default="compile" basedir=".">
+
+    <property name="app.name" value="html-parser"/>
+    <property name="classes" value="classes"/>
+    <property name="sourcedir" value="src/main/java"/>
+    <property name="javadoc" value="."/>
+    <property name="jar" value="${app.name}.jar"/>
+    <property name="src.jar" value="${app.name}-src.jar"/>
+    <property environment="ENV"/>
+
+    <path id="build.class.path">
+        <pathelement location="${classes}"/>
+        <fileset dir="lib" includes="*.jar,*.zip"/>
+    </path>
+
+    <taskdef name="javacc"
+        classname="org.apache.tools.ant.taskdefs.optional.javacc.JavaCC">
+        <classpath refid='build.class.path'/>
+    </taskdef>
+
+    <target name="prepare">
+        <mkdir dir="${classes}"/>
+    </target>
+
+
+    <target name="clean">
+        <delete dir="${classes}"/>
+        <delete file="${jar}"/>
+        <delete file="${src.jar}"/>
+    </target>
+
+    <target name="precompile" depends="prepare" >
+        <java classname="javacc" dir="${sourcedir}/com/quiotix/html/parser" fork="true" >
+            <classpath refid="build.class.path" />
+            <arg value="${basedir}/${sourcedir}/com/quiotix/html/parser/HtmlParser.jj" />
+        </java>
+    </target>
+
+    <target name="compile" depends="prepare,precompile">
+        <javac srcdir="${sourcedir}" destdir="${classes}"
+            debug="on" optimize="off" deprecation="off">
+            <classpath refid='build.class.path'/>
+        </javac>
+    </target>
+
+
+    <target name="javadoc" depends="prepare">
+        <javadoc sourcepath="${sourcedir}" packagenames="*" destdir="${javadoc}"/>
+    </target>
+
+
+    <target name="all" depends="clean,prepare,compile,javadoc"/>
+
+    <target name="dist" depends="prepare,compile">
+        <jar jarfile="${jar}" basedir="${classes}"/>
+        <jar jarfile="${src.jar}" basedir="."
+            includes="${sourcedir}/**/*.*,www/**/*.html,build.xml"/>
+        <copy todir="www">
+            <fileset dir="." includes="*.jar"/>
+        </copy>
+    </target>
+
+    <target name="deploy" depends="dist">
+        <copy todir="/var/www/html/downloads/html-parser">
+            <fileset dir="www" includes="**/*.html,**/*.jar,archive/**"/>
+        </copy>
+        <copy todir="/var/www/html/downloads/html-parser/src">
+            <fileset dir="${sourcedir}" includes="**/*"/>
+        </copy>
+    </target>
+
+</project>
+
+

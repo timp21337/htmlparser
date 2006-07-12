@@ -1,0 +1,229 @@
+<?xml version="1.0"?>
+<!-- Maven 2 version -->
+<document>
+
+  <properties>
+	<title>JavaCC HTML Parser</title>
+  </properties>
+
+  <body>
+
+
+<section name="JavaCC HTML Parser">
+<p>This is a JavaCC grammar for parsing HTML documents.  It does not
+enforce the DTD, but instead builds a simple parse tree which can be
+used to validate, reformat, display, analyze, or edit the HTML
+document.  The goal was to produce a parse tree which threw away very
+little information contained in the source file, so that by dumping
+the parse tree, an almost identical copy of the input document would
+result.  The only source information discarded by the parser is
+whitespace inside of tags (i.e., the spaces or newlines between the
+attributes of a tag.)  It is not confused by things that look like
+tags inside of quoted strings.
+</p>
+<p>The generated parse tree supports the commonly used
+&quot;Visitor&quot; design pattern.  Several visitor classes are
+provided, which do things like dump the parse tree, restructure the
+parse tree, etc.  Common tasks such as formatting, validation, or
+analysis are easily performed as Visitors.  </p>
+
+<p>The code is contained in several files, which are part of the
+packages <tt>com.quiotix.html</tt> and
+<tt>com.quiotix.html.parser</tt>.  You can also download all the files
+as a source <a href="html-parser-src.jar">archive</a> or the class files in a
+pre-built 
+<a href="html-parser.jar">jar file</a>.
+</p>
+<subsection name="Compiling and testing">
+
+<p>The parser was written with <a href="https://javacc.dev.java.net/">JavaCC</a>,
+the Java Compiler Compiler. You do not need JavaCC unless you plan to
+modify the core parser. The parser package is built with <a href="http://jakarta.apache.org/ant">Ant</a>.
+To compile the package with ANT, simply execute <pre>ant</pre>
+</p>
+<p>If you have installed JavaCC and want to recompile the parser from the
+JavaCC source, also set the <tt>$JAVACC_HOME</tt> environment variable.
+</p>
+<p>
+To compile with Maven 2:
+<pre>
+mvn package
+</pre>
+</p>
+<p>
+The main()
+method of HtmlParser will read an HTML file from System.in, parse it, and visit
+it with a Visitor which reconstructs the original file and dumps it to
+System.out. While this is not terribly useful for anything other than testing,
+it does test all the elements of the parser. To test it, put the parser
+files on your classpath and execute
+<pre>	java com.quiotix.html.parser.HtmlParser &lt; some-html-file.html
+</pre>
+</p>
+</subsection>
+<subsection name="Using the parser">
+<p>The parser transforms an input stream into a parse tree; the elements of the
+parse tree are defined in 
+<a href="src/com/quiotix/html/parser/HtmlDocument.java">HtmlDocument</a>.
+You can then traverse the tree using the Visitor pattern; the base visitor is
+defined in 
+<a href="src/com/quiotix/html/parser/HtmlVisitor.java">HtmlVisitor</a>,
+and there are several visitors which are part of the HtmlParser package. 
+<a href="src/com/quiotix/html/parser/HtmlDumper.java">HtmlDumper</a>
+is a simple visitor which traverses the parse tree and reconstructs the 
+original document and writes it to System.out; 
+it is a useful starting point for building
+your own custom visitors. 
+<a href="src/com/quiotix/html/parser/HtmlCollector.java">HtmlCollector</a>
+and <a href="src/com/quiotix/html/parser/HtmlScrubber.java">HtmlScrubber</a> 
+are more sophisticated visitors, which transform the parse tree.
+ HtmlCollector imparts a tree structure to the otherwise flat parse tree, 
+matching begin and
+end blocks with each other. HtmlScrubber cleans up the documents,
+converting tags and attributes to upper or lower case, removes unnecessary
+quotes and white space, etc.
+</p>
+<p>To parse a document, invoke the HtmlDocument method on the parser.
+This will produce an HtmlDocument, which is a sequence of HtmlElement
+objects.  Defined subclasses of HtmlElement include Tag, EndTag,
+Comment, Text, Newline, and TagBlock (TagBlock is a composite object
+comprising of a tag, a matching end tag, and a sequence of the
+intervening elements.)  </p>
+
+<p>In order to not have the parser reject documents which do not meet
+the DTD requirements but which still would be accepted by most
+browsers (e.g., documents with missing end tags, overlapped tags, tags
+in a context where the DTD doesn't allow them, etc), the parser does
+not attempt to match start tags with end tags (so the result of the
+parsing process will not contain TagBlock elements.)  This is more
+easily done after parsing by a bottom-up parsing mechanism anyway, and
+the HtmlCollector class (a subclass of HtmlVisitor) does this; it
+walks the document and attempts to match up tags and impart more
+structure to the document.  </p>
+</subsection>
+<subsection name="Examples">
+<p><a href="examples/HtmlParse.java">HtmlParse</a> simply invokes the parser and
+dumps the resulting parse tree with HtmlDumper.  
+</p>
+<p><a href="examples/HtmlFormat.java">HtmlFormat</a>
+is an example program which uses the parser, the scrubber, and the collector to
+parse and pretty-print an HTML page and dump it to System.out.  
+</p>
+<p>
+<a href="examples/DumpLinks.java">DumpLinks</a>
+is a simple visitor which parses a document from System.in and writes out a list
+of links in the document to System.out.  
+</p>
+</subsection>
+<subsection name="Copyright">
+<p>Copyright (C) 1999-2002 <a href="http://www.quiotix.com">Quiotix
+ Corporation</a>.  This program is free software; you can redistribute
+ it and/or modify it under the terms of the GNU General Public
+ License, version 2 as published by the Free Software Foundation.
+</p>
+ <p>This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU <a
+ href="http://www.gnu.org/copyleft/gpl.txt">General Public License</a>
+ for more details.
+ </p>
+<p>If you use it, like it, dislike it, or find it useful, we would
+appreciate your letting us know by dropping an e-mail to <a
+href="mailto:html-parser@quiotix.com">html-parser@quiotix.com</a>.
+Also, if you find any errors or have suggestions for improving it, or
+you find HTML files which it will not parse, let us know and we can
+post corrections and improvements.  </p>
+
+<p>Commercial support contracts are also available for this package.  If you
+are interested in a commercial support contract, please <A HREF="mailto:html-parser@quiotix.com">contact us</A>.  
+</p>
+</subsection>
+<subsection name="Version History">
+<table cellpadding="5">
+<tr><th align="left">Version</th><th align="left">Date</th><th align="left">Comments</th></tr>
+
+<tr>
+  <td>1.2</td><td>12-Jul-2006</td>
+  <td>Convert to Maven. Ant build still supported. 
+      Examples moved into main tree.
+  </td>
+</tr>
+<tr>
+  <td>1.1.1</td><td>08-Jul-2005</td><td>Do best-effort-only quote matching in HTML declarations, to deal with broken DOCTYPE declaration generated by some versions of JavaDoc.
+</td>
+</tr>
+<tr>
+  <td>1.1</td><td>04-May-2005</td><td>Remove matching of quoted strings in text, which can confuse the parser
+  in some documents; add attribute-fetching methods in AttributeList and Tag.  
+  Convert JDK 1.1 collections to Collections framework.
+</td>
+</tr>
+<tr>
+  <td>1.03</td><td>07-Sep-2004</td><td>Support identifiers with namespaces
+</td>
+</tr>
+<tr>
+  <td>1.02</td><td>29-May-2002</td><td>Repackage, add ANT script, add more
+    examples, update documentation
+</td>
+</tr>
+
+<tr valign="top"><td>1.01</td><td>06-Nov-2000</td><td>Treat STYLE blocks
+just like SCRIPT blocks; don't interpret markup inside of STYLE blocks.
+Accept "-- >" and "->" as valid end-comment markers (the former is part of
+the spec; the latter is a not uncommon HTML coding error.)  
+Accept XML-style "empty" tags (e.g., &lt;tag /&gt;).  Archive reorganized 
+somewhat, more examples added.  
+(<a href="html-parser-src.jar">source archive</a>, 
+<a href="html-parser.jar">jar file</a>)
+</td></tr>
+
+<tr valign="top"><td><a href="archive/HtmlParser-1.0.jj">1.00</a></td>
+<td>03-Nov-1999</td><td>Fixed bug in error
+recovery code which caused us to drop whitespace inside things that
+looked like tags but turned out not to be (or which were mal-formed.)
+Thanks to Doug Reed for reporting this bug.  
+(<a href="archive/html-parser-1.0.tar.gz">tar file</a>)</td></tr>
+
+<tr valign="top"><td>0.92a</td><td>21-Jul-1999</td><td>Fixed bug in
+HtmlScrubber.java, submitted by Thorsten Weber.  No change to
+HtmlParser.jj. </td></tr>
+
+<tr valign="top"><td><a href="archive/HtmlParser-0.92.jj">0.92</a></td>
+<td>01-Jul-1999</td><td>Added
+extensive error handling and recovery; now handles mal-formed tags as
+ordinary text.  Also handles &lt;SCRIPT&gt; blocks properly.
+</td></tr>
+
+<tr valign="top"><td><a
+href="archive/HtmlParser-0.91.jj">0.91</a></td><td>14-Jun-1999</td><td>Fixed
+bugs in quote processing; now handles unmatched quotes (including
+apostrophes) in text and in comments</td></tr>
+
+<tr valign="top"><td>0.90</td><td>10-Jun-1999</td><td>Initial public release</td></tr>
+</table>
+</subsection>
+<subsection name="Known Issues">
+<dl>
+<dt>Quote processing.</dt> <dd>The parser tries to properly deal with
+quoted strings properly (so that things that look like tags or
+end-of-comment markers inside of quotes are not mistaken for tags),
+but sometimes quoted strings are improperly terminated, or an
+apostrophe will be interpreted as the start of a quoted string.
+(Changed in 1.1; quoted strings in
+body text are no longer treated as anything but text.  This was a problem in very early
+versions of JavaScript, prior to the SCRIPT tag.)  </dd>
+
+<dt>Things that look like tags.</dt> <dd>(Resolved in 0.92.)  The
+presence of a &lt; character in the text can confuse the parser into
+thinking it's found a tag.  While this is improper HTML (you should
+use the &amp;lt; sequence instead), many HTML pages take advantage of
+the browsers forgiving nature here.
+</dd>
+</dl>
+</subsection>
+</section>
+
+</body>
+
+</document>

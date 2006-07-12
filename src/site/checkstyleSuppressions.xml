@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Puppy Crawl//DTD Suppressions 1.0//EN"
+    "http://www.puppycrawl.com/dtds/suppressions_1_0.dtd">
+
+<suppressions>
+    <suppress checks="UnusedImports"
+              files="TokenManager.java" />
+    <suppress checks="JavadocType"
+              files="TokenManager.java" />
+    <suppress checks="JavadocType"
+              files="TokenMgrError.java" />
+    <suppress checks="JavadocType"
+              files="ParserConstants.java" />
+    <!-- Interface for constant definition anti-pattern used -->
+    <suppress checks="InterfaceIsType"
+              files="ParserConstants.java" />
+    <suppress checks="LeftCurly"
+              files="ParseException.java" />
+    <suppress checks="LeftCurly"
+              files="TokenMgrError.java" />
+    <suppress checks="AvoidNestedBlocks"
+              files="Parser.java" />
+
+
+</suppressions>

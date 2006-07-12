@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="htmlparser">
+
+  <skin>
+    <groupId>org.melati</groupId>
+    <artifactId>melati-skin</artifactId>
+    <version>1.0-SNAPSHOT</version>
+  </skin>
+  <bannerLeft>
+    <name>Quiotix</name>
+    <src>http://www.quiotix.com/logo-p.gif</src> 
+    <href>http://www.quiotix.com/</href>
+  </bannerLeft>
+  <bannerRight>
+    <name>PanEris</name>
+    <src>http://www.paneris.org/images/logo.jpg</src> 
+    <href>http://www.paneris.org/</href>
+  </bannerRight>
+
+  <body>
+   <links>
+    <item name="Context Computing" href="http://www.context-computing.co.uk/" />
+     <item name="PanEris.net"           href="http://www.paneris.net/" />
+     <item name="Quiotix"               href="http://www.quiotix.com/" />
+   </links>
+    <menu >
+      <item name="Documentation"       href="/documentation.html"/>
+    </menu>
+   ${reports}
+  </body>
+</project>
