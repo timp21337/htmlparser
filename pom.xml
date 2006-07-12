@@ -218,5 +218,16 @@ It is not confused by things that look like tags inside of quoted strings.
       </plugin>
     </plugins>
   </reporting>
+  <distributionManagement>
+    <repository>
+      <id>melati</id>
+      <name>Default Repository</name>
+      <url>scp://paneris.net/data/www/maven2/</url>
+    </repository>
+    <site>
+      <id>htmlparser</id>
+      <url>scp://paneris.net/data/www/htmlparser/</url>
+    </site>
+  </distributionManagement>  
 
 </project>
