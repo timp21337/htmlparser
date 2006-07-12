@@ -27,13 +27,20 @@ provided, which do things like dump the parse tree, restructure the
 parse tree, etc.  Common tasks such as formatting, validation, or
 analysis are easily performed as Visitors.  </p>
 
+<subsection name="Downloading">
 <p>The code is contained in several files, which are part of the
-packages <tt>com.quiotix.html</tt> and
-<tt>com.quiotix.html.parser</tt>.  You can also download all the files
-as a source <a href="html-parser-src.jar">archive</a> or the class files in a
-pre-built 
-<a href="html-parser.jar">jar file</a>.
+packages <tt>com.quiotix.html.example</tt> and
+<tt>com.quiotix.html.parser</tt>.  
 </p>
+<p>
+You can download the source tree from the 
+<a href="source-repository.html">Source Repository</a></p>
+<p>You can download all the files as a source 
+<a href="http://paneris.net/maven2/com/quiotix/htmlparser/1.2/htmlparser-1.2-sources.jar">archive</a> or the class files in a
+pre-built 
+<a href="http://paneris.net/maven2/com/quiotix/htmlparser/1.2/htmlparser-1.2.jar">jar file</a> from the <a href="http://paneris.net/maven2/com/quiotix/htmlparser/">project repository</a>.
+</p>
+</subsection>
 <subsection name="Compiling and testing">
 
 <p>The parser was written with <a href="https://javacc.dev.java.net/">JavaCC</a>,
