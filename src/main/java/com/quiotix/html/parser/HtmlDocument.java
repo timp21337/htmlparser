@@ -294,6 +294,9 @@ public class HtmlDocument {
         }
     }
 
+    /**
+     * A Tag Attribute.
+     */
     public static class Attribute {
         public String name, value;
         public boolean hasValue;
@@ -318,6 +321,9 @@ public class HtmlDocument {
         }
     }
 
+    /**
+     * A List of Attributes.
+     */
     public static class AttributeList {
         public List attributes = new ArrayList();
 
