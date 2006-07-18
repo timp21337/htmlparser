@@ -150,10 +150,10 @@ It is not confused by things that look like tags inside of quoted strings.
         </reportSet>
        </reportSets>
       </plugin>
-      <!--plugin>
+      <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>changelog-maven-plugin</artifactId>
-      </plugin-->
+      </plugin>
       <!--plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>surefire-report-maven-plugin</artifactId>
@@ -175,7 +175,7 @@ It is not confused by things that look like tags inside of quoted strings.
           <maxmemory>512</maxmemory>
         </configuration>
       </plugin>
-      <!--plugin>
+      <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-pmd-plugin</artifactId>
         <configuration>
@@ -193,7 +193,7 @@ It is not confused by things that look like tags inside of quoted strings.
           <sourceEncoding>utf-8</sourceEncoding>
           <minimumTokens>100</minimumTokens>
         </configuration>
-      </plugin-->
+      </plugin>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>jdepend-maven-plugin</artifactId>
