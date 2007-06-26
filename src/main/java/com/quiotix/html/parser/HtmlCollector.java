@@ -39,8 +39,8 @@ public class HtmlCollector extends HtmlVisitor {
     protected boolean collected;
     protected static Set dontMatch = new HashSet();
     protected static String[] dontMatchStrings
-            = {"AREA", "BASE", "BASEFONT", "BR", "COL", "HR", "IMG", "INPUT",
-               "ISINDEX", "LINK", "META", "P", "PARAM"};
+    = {"AREA", "BASE", "BASEFONT", "BR", "COL", "HR", "IMG", "INPUT",
+       "ISINDEX", "LINK", "META", "PARAM"};
 
     static {
         for (int i = 0; i < dontMatchStrings.length; i++)
@@ -53,6 +53,7 @@ public class HtmlCollector extends HtmlVisitor {
     };
 
     private static class ElementStack extends Vector {
+
         ElementStack() {
             super();
         }
