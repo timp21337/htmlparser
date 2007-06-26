@@ -34,6 +34,7 @@ public class HtmlScrubber extends HtmlVisitor {
     public static final int ATTR_DOWNCASE   = 8;
     public static final int STRIP_QUOTES    = 16;
     public static final int TRIM_SPACES     = 32;
+    public static final int QUOTE_ATTRS     = 64;
     public static final int DEFAULT_OPTIONS =
             TAGS_DOWNCASE | ATTR_DOWNCASE | STRIP_QUOTES;
 
@@ -73,6 +74,24 @@ public class HtmlScrubber extends HtmlVisitor {
                 && (upperCount == 0 || lowerCount == 0)));
     };
 
+    private static boolean isSingleQuoted(String s) {
+      if (s.charAt(0) =='\'' && s.charAt(s.length()-1) == '\'') {
+        return true;
+      }
+      else return false;
+        
+    }
+    private static boolean isDoubleQuoted(String s) {
+      if (s.charAt(0) =='"' && s.charAt(s.length()-1) == '"') {
+        return true;
+      }
+      else return false;
+        
+    }
+    private static boolean isQuoted(String s) {
+      return isDoubleQuoted(s) || isSingleQuoted(s);
+    }
+
     public void start() {
         previousElement = null;
         inPreBlock = false;
@@ -90,13 +109,22 @@ public class HtmlScrubber extends HtmlVisitor {
             else if ((flags & ATTR_DOWNCASE) != 0)
                 a.name = a.name.toLowerCase();
             if (((flags & STRIP_QUOTES) != 0)
-                    && a.hasValue
-                    && ((a.value.charAt(0) == '\'' && a.value.charAt(a.value.length()-1) == '\'')
-                        || (a.value.charAt(0) == '\"' && a.value.charAt(a.value.length()-1) == '\"'))
-                    && safeToUnquote(a.value)) {
-                a.value = a.value.substring(1, a.value.length()-1);
-            };
-        };
+                && a.hasValue
+                && isQuoted(a.value)
+                && safeToUnquote(a.value)) {
+              a.value = a.value.substring(1, a.value.length()-1);
+            }
+            if (((flags & QUOTE_ATTRS) != 0)
+                && a.hasValue) {
+              if (!isDoubleQuoted(a.value)) {
+                if (isSingleQuoted(a.value)) {
+                  a.value = a.value.substring(1, a.value.length()-1);
+                } 
+                a.value = "\"" + a.value + "\"";
+              }
+              //System.err.println(a.value);
+            }
+        }
 
         previousElement = t;
     }
