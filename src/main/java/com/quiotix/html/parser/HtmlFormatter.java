@@ -50,13 +50,13 @@ public class HtmlFormatter extends HtmlVisitor {
     protected static Set tagsPreformatted = new HashSet();
     protected static Set tagsTryMatch = new HashSet();
     protected static final String[] tagsIndentStrings
-            = {"TABLE", "TR", "TD", "TH", "FORM", "HTML", "HEAD", "BODY", "SELECT"};
+            = {"TABLE", "TR", "TD", "TH", "FORM", "HTML", "HEAD", "BODY", "SELECT", "OL", "UL", "LI"};
     protected static final String[] tagsNewlineBeforeStrings
             = {"P", "H1", "H2", "H3", "H4", "H5", "H6", "BR"};
     protected static final String[] tagsPreformattedStrings
             = {"PRE", "SCRIPT", "STYLE"};
     protected static final String[] tagsTryMatchStrings
-            = {"A", "TD", "TH", "TR", "I", "B", "EM", "FONT", "TT", "UL"};
+            = {"A", "TD", "TH", "TR", "I", "B", "EM", "FONT", "TT", "UL", "OL", "LI"};
 
     static {
         for (int i = 0; i < tagsIndentStrings.length; i++)
@@ -100,8 +100,9 @@ public class HtmlFormatter extends HtmlVisitor {
                 out.printAutoWrap(blockRenderer.getString());
                 previousElement = block.endTag;
                 return;
-            };
-        };
+            } 
+
+        }
 
         // Only will get here if we've failed the try-block test
         indent = tagsIndentBlock.contains(block.startTag.tagName.toUpperCase());
@@ -129,7 +130,7 @@ public class HtmlFormatter extends HtmlVisitor {
             visit(block.startTag);
             visit(block.body);
             visit(block.endTag);
-        };
+        }
     }
 
     public void visit(HtmlDocument.Tag t) {
