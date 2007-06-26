@@ -165,6 +165,29 @@ public class HtmlDocument {
         public void accept(HtmlVisitor v) {
             v.visit(this);
         }
+        
+        public String toString() {
+          StringBuffer sb = new StringBuffer();
+          sb.append(startTag.toString());
+          for (Iterator iterator = body.iterator(); iterator.hasNext();) {
+            HtmlDocument.HtmlElement htmlElement = (HtmlDocument.HtmlElement) iterator.next();
+            sb.append(htmlElement.toString());
+          }
+          sb.append(endTag.toString());
+          return sb.toString();
+        }
+        
+        public String text() {
+          StringBuffer sb = new StringBuffer();
+          for (Iterator iterator = body.iterator(); iterator.hasNext();) {
+            HtmlDocument.HtmlElement htmlElement = (HtmlDocument.HtmlElement) iterator.next();
+            if (htmlElement instanceof Text) {
+              sb.append(htmlElement.toString());
+            } else if(htmlElement instanceof TagBlock)
+              sb.append(((TagBlock)htmlElement).text());
+          }
+          return sb.toString();
+        }
     }
 
     /**
