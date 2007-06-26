@@ -23,7 +23,11 @@
  *
  */
 
-options { IGNORE_CASE = true; STATIC = false; } 
+options { 
+  IGNORE_CASE = true; 
+  STATIC = false; 
+  DEBUG_TOKEN_MANAGER = false;
+} 
 
 PARSER_BEGIN(HtmlParser)
 
@@ -84,6 +88,12 @@ public class HtmlParser {
 PARSER_END(HtmlParser)
 
 
+<*> SKIP: {
+  "=\n" | "=\r\n" | "=\r" 
+  {
+  System.err.println("Skipping");
+  }
+}
 
 <*> TOKEN :
 {
@@ -100,6 +110,7 @@ PARSER_END(HtmlParser)
 | <#QUOTE:      ( "'" | "\"" )>
 }
 
+
 <DEFAULT> TOKEN : 
 {
   <EOL:            ( " " | "\t" )* <NEWLINE> >
@@ -109,6 +120,7 @@ PARSER_END(HtmlParser)
 | <DECL_START:     "<!"      > : LexDecl
 | <PCDATA:         ( ~["<", "\r", "\n"] )+ >
 }
+
 
 <LexStartTag> TOKEN :
 {
