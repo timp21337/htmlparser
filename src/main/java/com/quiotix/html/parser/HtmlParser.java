@@ -400,11 +400,6 @@ public class HtmlParser implements HtmlParserConstants {
     finally { jj_save(3, xla); }
   }
 
-  final private boolean jj_3_2() {
-    if (jj_3R_6()) return true;
-    return false;
-  }
-
   final private boolean jj_3R_5() {
     if (jj_scan_token(TAG_START)) return true;
     if (jj_scan_token(TAG_NAME)) return true;
@@ -439,6 +434,11 @@ public class HtmlParser implements HtmlParserConstants {
     return false;
   }
 
+  final private boolean jj_3_2() {
+    if (jj_3R_6()) return true;
+    return false;
+  }
+
   public HtmlParserTokenManager token_source;
   SimpleCharStream jj_input_stream;
   public Token token, jj_nt;
@@ -456,10 +456,10 @@ public class HtmlParser implements HtmlParserConstants {
       jj_la1_1();
    }
    private static void jj_la1_0() {
-      jj_la1_0 = new int[] {0x1f800,0xe000,0x10800,0x2000000,0x400000,0x1800000,0x0,0x0,0x0,0x0,0x80000001,};
+      jj_la1_0 = new int[] {0xfc000,0x70000,0x84000,0x10000000,0x2000000,0xc000000,0x0,0x0,0x0,0x0,0x1,};
    }
    private static void jj_la1_1() {
-      jj_la1_1 = new int[] {0x0,0x0,0x0,0x0,0x0,0x0,0x380,0x380,0x7,0x7,0x0,};
+      jj_la1_1 = new int[] {0x0,0x0,0x0,0x0,0x0,0x0,0x1c00,0x1c00,0x38,0x38,0x4,};
    }
   final private JJCalls[] jj_2_rtns = new JJCalls[4];
   private boolean jj_rescan = false;
@@ -630,8 +630,8 @@ public class HtmlParser implements HtmlParserConstants {
 
   public ParseException generateParseException() {
     jj_expentries.removeAllElements();
-    boolean[] la1tokens = new boolean[42];
-    for (int i = 0; i < 42; i++) {
+    boolean[] la1tokens = new boolean[45];
+    for (int i = 0; i < 45; i++) {
       la1tokens[i] = false;
     }
     if (jj_kind >= 0) {
@@ -650,7 +650,7 @@ public class HtmlParser implements HtmlParserConstants {
         }
       }
     }
-    for (int i = 0; i < 42; i++) {
+    for (int i = 0; i < 45; i++) {
       if (la1tokens[i]) {
         jj_expentry = new int[1];
         jj_expentry[0] = i;

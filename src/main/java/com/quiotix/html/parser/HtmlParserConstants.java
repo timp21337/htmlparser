@@ -4,45 +4,45 @@ package com.quiotix.html.parser;
 public interface HtmlParserConstants {
 
   int EOF = 0;
-  int ALPHA_CHAR = 1;
-  int NUM_CHAR = 2;
-  int ALPHANUM_CHAR = 3;
-  int IDENTIFIER_CHAR = 4;
-  int IDENTIFIER = 5;
-  int QUOTED_STRING_NB = 6;
-  int QUOTED_STRING = 7;
-  int WHITESPACE = 8;
-  int NEWLINE = 9;
-  int QUOTE = 10;
-  int EOL = 11;
-  int TAG_START = 12;
-  int ENDTAG_START = 13;
-  int COMMENT_START = 14;
-  int DECL_START = 15;
-  int PCDATA = 16;
-  int TAG_SCRIPT = 17;
-  int TAG_STYLE = 18;
-  int TAG_NAME = 19;
-  int LST_ERROR = 20;
-  int ATTR_NAME = 22;
-  int TAG_END = 23;
-  int TAG_SLASHEND = 24;
-  int ATTR_EQ = 25;
-  int IMPLICIT_TAG_END = 26;
-  int LIT_ERROR = 27;
-  int ATTR_VAL = 29;
-  int LAV_ERROR = 30;
-  int COMMENT_END = 31;
-  int DASH = 32;
-  int COMMENT_EOL = 33;
-  int COMMENT_WORD = 34;
-  int DECL_ANY = 35;
-  int DECL_END = 36;
-  int SCRIPT_END = 37;
-  int STYLE_END = 38;
-  int BLOCK_EOL = 39;
-  int BLOCK_LBR = 40;
-  int BLOCK_WORD = 41;
+  int ALPHA_CHAR = 4;
+  int NUM_CHAR = 5;
+  int ALPHANUM_CHAR = 6;
+  int IDENTIFIER_CHAR = 7;
+  int IDENTIFIER = 8;
+  int QUOTED_STRING_NB = 9;
+  int QUOTED_STRING = 10;
+  int WHITESPACE = 11;
+  int NEWLINE = 12;
+  int QUOTE = 13;
+  int EOL = 14;
+  int TAG_START = 15;
+  int ENDTAG_START = 16;
+  int COMMENT_START = 17;
+  int DECL_START = 18;
+  int PCDATA = 19;
+  int TAG_SCRIPT = 20;
+  int TAG_STYLE = 21;
+  int TAG_NAME = 22;
+  int LST_ERROR = 23;
+  int ATTR_NAME = 25;
+  int TAG_END = 26;
+  int TAG_SLASHEND = 27;
+  int ATTR_EQ = 28;
+  int IMPLICIT_TAG_END = 29;
+  int LIT_ERROR = 30;
+  int ATTR_VAL = 32;
+  int LAV_ERROR = 33;
+  int COMMENT_END = 34;
+  int DASH = 35;
+  int COMMENT_EOL = 36;
+  int COMMENT_WORD = 37;
+  int DECL_ANY = 38;
+  int DECL_END = 39;
+  int SCRIPT_END = 40;
+  int STYLE_END = 41;
+  int BLOCK_EOL = 42;
+  int BLOCK_LBR = 43;
+  int BLOCK_WORD = 44;
 
   int LexStyle = 0;
   int LexScript = 1;
@@ -55,6 +55,9 @@ public interface HtmlParserConstants {
 
   String[] tokenImage = {
     "<EOF>",
+    "\"=\\n\"",
+    "\"=\\r\\n\"",
+    "\"=\\r\"",
     "<ALPHA_CHAR>",
     "<NUM_CHAR>",
     "<ALPHANUM_CHAR>",
@@ -75,14 +78,14 @@ public interface HtmlParserConstants {
     "\"STYLE\"",
     "<TAG_NAME>",
     "<LST_ERROR>",
-    "<token of kind 21>",
+    "<token of kind 24>",
     "<ATTR_NAME>",
     "\">\"",
     "\"/>\"",
     "\"=\"",
     "\"<\"",
     "<LIT_ERROR>",
-    "<token of kind 28>",
+    "<token of kind 31>",
     "<ATTR_VAL>",
     "<LAV_ERROR>",
     "<COMMENT_END>",
