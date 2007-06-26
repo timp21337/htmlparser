@@ -19,7 +19,7 @@ import com.quiotix.html.parser.HtmlScrubber;
 
 public class HtmlFormat {
   public static void main (String args[]) throws IOException {
-    boolean compress=false, format=false;
+    boolean compress=false, format=false, quote=false;
     int i, rightMargin=-1, indentIncrement=-1;
     InputStream r;
     HtmlDocument document;
@@ -36,6 +36,11 @@ public class HtmlFormat {
         compress = false;
         format = true;
       }
+      else if (args[i].equals("-quote")) {
+        compress = false;
+        format = true;
+        quote = true;
+      }
       else if (args[i].equals("-indent")
                && i+1 < args.length) {
         compress = false;
@@ -50,20 +55,23 @@ public class HtmlFormat {
       };
     };
 
+    int scrubberFlags = HtmlScrubber.DEFAULT_OPTIONS 
+                        | HtmlScrubber.TRIM_SPACES;
     for (; i < args.length; i++) { 
       r = new FileInputStream(args[i]);
     
       try { 
         document = new HtmlParser(r).HtmlDocument();
         if (compress) {
-          document.accept(new HtmlScrubber(HtmlScrubber.DEFAULT_OPTIONS 
-                                           | HtmlScrubber.TRIM_SPACES));
+          document.accept(new HtmlScrubber(scrubberFlags));
           document.accept(new HtmlDumper(System.out));
         }
         else if (format) {
           document.accept(new HtmlCollector());
-          document.accept(new HtmlScrubber(HtmlScrubber.DEFAULT_OPTIONS 
-                                           | HtmlScrubber.TRIM_SPACES));
+          if (quote) {
+            scrubberFlags = scrubberFlags | HtmlScrubber.QUOTE_ATTRS;
+          }
+          document.accept(new HtmlScrubber(scrubberFlags));
           v = new HtmlFormatter(System.out);
           if (rightMargin != -1)     v.setRightMargin(rightMargin);
           if (indentIncrement != -1) v.setIndent(indentIncrement);
@@ -71,8 +79,7 @@ public class HtmlFormat {
         }
         else {
           document.accept(new HtmlCollector());
-          document.accept(new HtmlScrubber(HtmlScrubber.DEFAULT_OPTIONS 
-                                           | HtmlScrubber.TRIM_SPACES));
+          document.accept(new HtmlScrubber(scrubberFlags));
           v = new HtmlFormatter(System.out);
           v.setRightMargin(1024);
           v.setIndent(0);
