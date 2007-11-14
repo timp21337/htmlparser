@@ -248,7 +248,6 @@ HtmlDocument.HtmlElement Element() :
 
 HtmlDocument.Attribute Attribute() : 
 {
-  HtmlDocument.Attribute a; 
   Token t1, t2=null;
 }
 {
