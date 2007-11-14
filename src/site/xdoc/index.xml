@@ -213,7 +213,7 @@ apostrophes) in text and in comments</td></tr>
 </subsection>
 <subsection name="Known Issues">
 <dl>
-<dt>Quote processing.</dt> <dd>The parser tries to properly deal with
+<dt>Quote processing.</dt> <dd>The parser tries to deal with
 quoted strings properly (so that things that look like tags or
 end-of-comment markers inside of quotes are not mistaken for tags),
 but sometimes quoted strings are improperly terminated, or an
