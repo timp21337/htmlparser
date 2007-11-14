@@ -18,6 +18,10 @@ import com.quiotix.html.parser.HtmlScrubber;
  */
 
 public class HtmlFormat {
+
+  /**
+   * Runnable.
+   */
   public static void main (String args[]) throws IOException {
     boolean compress=false, format=false, quote=false;
     int i, rightMargin=-1, indentIncrement=-1;

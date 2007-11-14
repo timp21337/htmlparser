@@ -21,6 +21,10 @@ import com.quiotix.html.parser.HtmlScrubber;
  */
 
 public class HtmlParse {
+
+  /**
+   * Runnable.
+   */
   public static void main (String args[]) throws IOException {
     InputStream r;
     HtmlDocument document;

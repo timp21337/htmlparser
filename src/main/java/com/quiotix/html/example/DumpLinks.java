@@ -23,8 +23,18 @@ public class DumpLinks extends HtmlVisitor {
 
   protected PrintWriter out;
 
+  /**
+   * Constructor.
+   * 
+   * @param os OutputStream to dump to
+   */
   public DumpLinks(OutputStream os)     { out = new PrintWriter(os); }
 
+  /**
+   * Constructor.
+   * 
+   * @param os OutputStream to dump to
+   */
   public DumpLinks(OutputStream os, String encoding)
     throws UnsupportedEncodingException {
     out = new PrintWriter( new OutputStreamWriter(os, encoding) );
@@ -42,6 +52,12 @@ public class DumpLinks extends HtmlVisitor {
     }
   }
 
+  /**
+   * Remove quotes from a String if it starts and ends with one. 
+   * 
+   * @param s String to remove quotes from
+   * @return the input with starting and ending quotes removed
+   */
   public static String deQuote(String s) {
     if (s.startsWith("\"") && s.endsWith("\""))
       return s.substring(1, s.length() - 1);
@@ -49,6 +65,9 @@ public class DumpLinks extends HtmlVisitor {
       return s;
   }
 
+  /**
+   * Runnable.
+   */
   public static void main (String args[]) throws ParseException, IOException {
     HtmlDocument document;
 
