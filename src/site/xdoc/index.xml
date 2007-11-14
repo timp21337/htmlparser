@@ -8,7 +8,13 @@
 
   <body>
 
-
+<section name="Derivation">
+<p>
+The original of this work went off-line in 2007. 
+Do get in touch if, like me, you value this work.
+Tim Pizey.
+</p>
+</section>
 <section name="JavaCC HTML Parser">
 <p>This is a JavaCC grammar for parsing HTML documents.  It does not
 enforce the DTD, but instead builds a simple parse tree which can be
@@ -150,6 +156,19 @@ are interested in a commercial support contract, please <A HREF="mailto:html-par
 <table cellpadding="5">
 <tr><th align="left">Version</th><th align="left">Date</th><th align="left">Comments</th></tr>
 
+<tr>
+  <td>1.3</td><td>26-Jul-2006</td>
+  <td>
+     <ul>
+      <li>Move default version of HTML up to 4 ie close P and LI tags, add quotes to unquoted attributes</li>
+      <li>Allow equal signs at end of line as skip space (continuation character) 
+          to cope with Microsoft Internet Archive format (.mht)</li>
+      <li>Regenerate with current javacc builds to reduce warnings in eclipse.
+          
+      </li>
+     </ul>
+  </td>
+</tr>
 <tr>
   <td>1.2</td><td>12-Jul-2006</td>
   <td>Convert to Maven. Ant build still supported. 
