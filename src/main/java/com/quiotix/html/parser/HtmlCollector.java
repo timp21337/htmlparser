@@ -62,7 +62,7 @@ public class HtmlCollector extends HtmlVisitor {
             super(n);
         }
 
-        public void popN(int n) {
+        void popN(int n) {
             elementCount -= n;
         }
     };
@@ -156,6 +156,9 @@ public class HtmlCollector extends HtmlVisitor {
             s.setElements(elements);
     }
 
+    /**
+     * Runnable.
+     */
     public static void main(String[] args) throws Exception {
         InputStream r = new FileInputStream(args[0]);
 

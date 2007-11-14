@@ -16,8 +16,10 @@ import java.util.Set;
 import com.quiotix.html.parser.HtmlDocument.Attribute;
 
 /**
+ * A runnable class intended to produce readable, sparse html 
+ * from formatted pages. 
+ * 
  * @author timp
- *
  */
 public class HtmlStripper extends HtmlDumper {
 
@@ -132,6 +134,9 @@ public class HtmlStripper extends HtmlDumper {
     return s.equals("");
   }
 
+  /**
+   * Runnable.
+   */
   public static void main(String[] args) throws Exception {
     InputStream r = new FileInputStream(args[0]);
 

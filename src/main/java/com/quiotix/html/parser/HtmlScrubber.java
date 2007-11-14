@@ -28,13 +28,21 @@ import java.util.Iterator;
 
 public class HtmlScrubber extends HtmlVisitor {
 
+    /** Set tag case to upper. */
     public static final int TAGS_UPCASE     = 1;
+    /** Set tag case to lower. */
     public static final int TAGS_DOWNCASE   = 2;
+    /** Set attribute case to upper. */
     public static final int ATTR_UPCASE     = 4;
+    /** Set attribute case to lower. */
     public static final int ATTR_DOWNCASE   = 8;
+    /** Remove quotes. */
     public static final int STRIP_QUOTES    = 16;
+    /** Trim spaces. */
     public static final int TRIM_SPACES     = 32;
+    /** Quote attributes. */
     public static final int QUOTE_ATTRS     = 64;
+    /** Defaults. */
     public static final int DEFAULT_OPTIONS =
             TAGS_DOWNCASE | ATTR_DOWNCASE | STRIP_QUOTES;
 
@@ -42,17 +50,18 @@ public class HtmlScrubber extends HtmlVisitor {
     protected HtmlDocument.HtmlElement previousElement;
     protected boolean inPreBlock;
 
-    /** Create an HtmlScrubber with the default options (downcase tags and
-     * tag attributes, strip out unnecessary quotes.)
+    /** 
+     * Create an HtmlScrubber with the default options 
+     * (downcase tags and tag attributes, strip out unnecessary quotes).
      */
     public HtmlScrubber() {
         this(DEFAULT_OPTIONS);
     };
 
-    /** Create an HtmlScrubber with the desired set of options.
+    /** 
+     * Create an HtmlScrubber with the desired set of options.
      * @param flags A bitmask representing the desired scrubbing options
      */
-
     public HtmlScrubber(int flags) {
         this.flags = flags;
     };

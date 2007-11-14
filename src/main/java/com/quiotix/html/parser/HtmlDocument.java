@@ -34,6 +34,7 @@ import java.util.List;
 public class HtmlDocument {
     ElementSequence elements;
 
+    /** Constructor. */
     public HtmlDocument(ElementSequence s) {
         elements = s;
     }

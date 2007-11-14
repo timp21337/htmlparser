@@ -30,10 +30,12 @@ import java.io.UnsupportedEncodingException;
 public class HtmlDumper extends HtmlVisitor {
     protected PrintWriter out;
 
+    /** Constructor. */
     public HtmlDumper(OutputStream os) {
         out = new PrintWriter(os);
     }
 
+    /** Constructor. */
     public HtmlDumper(OutputStream os, String encoding)
             throws UnsupportedEncodingException {
         out = new PrintWriter(new OutputStreamWriter(os, encoding));

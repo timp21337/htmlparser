@@ -72,6 +72,7 @@ public class HtmlFormatter extends HtmlVisitor {
     protected HtmlDocument.HtmlElement previousElement;
     protected boolean inPreBlock;
 
+    /** Constructor. */
     public HtmlFormatter(OutputStream os) throws Exception {
         out = new MarginWriter(new PrintWriter(new BufferedOutputStream(os)));
         out.setRightMargin(rightMargin);
@@ -204,6 +205,9 @@ public class HtmlFormatter extends HtmlVisitor {
         out.flush();
     };
 
+    /**
+     * Runnable.
+     */
     public static void main(String[] args) throws Exception {
         InputStream r = new FileInputStream(args[0]);
         HtmlDocument document;
@@ -236,6 +240,7 @@ class MarginWriter {
     protected java.io.PrintWriter out;
     protected char[] spaces = new char[256];
 
+    /** Constructor. */
     public MarginWriter(java.io.PrintWriter out) {
         this.out = out;
         for (int i = 0; i < spaces.length; i++)

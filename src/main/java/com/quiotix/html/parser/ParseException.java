@@ -51,6 +51,7 @@ public class ParseException extends Exception {
     specialConstructor = false;
   }
 
+  /** Constructor. */
   public ParseException(String message) {
     super(message);
     specialConstructor = false;

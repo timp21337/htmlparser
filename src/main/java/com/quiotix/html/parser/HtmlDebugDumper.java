@@ -28,6 +28,7 @@ import java.io.PrintWriter;
 public class HtmlDebugDumper extends HtmlVisitor {
     protected PrintWriter out;
 
+    /** Constructor. */
     public HtmlDebugDumper(OutputStream os) {
         out = new PrintWriter(os);
     }
@@ -68,6 +69,9 @@ public class HtmlDebugDumper extends HtmlVisitor {
         out.print("</BLOCK>");
     }
 
+    /**
+     * Runnable.
+     */
     public static void main(String[] args) throws ParseException {
         HtmlParser parser = new HtmlParser(System.in);
         HtmlDocument doc = parser.HtmlDocument();

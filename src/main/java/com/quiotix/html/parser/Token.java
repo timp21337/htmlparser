@@ -14,12 +14,14 @@ public class Token {
    */
   public int kind;
 
-  /**
-   * beginLine and beginColumn describe the position of the first character
-   * of this token; endLine and endColumn describe the position of the
-   * last character of this token.
-   */
-  public int beginLine, beginColumn, endLine, endColumn;
+  /** Position of the first character of this token. */
+  public int beginLine;
+  /** Position of the first character of this token. */
+  public int beginColumn;
+  /** Position of the last character of this token. */
+  public int endLine;
+  /** Position of the last character of this token. */
+  public int endColumn;
 
   /**
    * The string image of the token.
