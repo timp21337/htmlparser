@@ -463,7 +463,8 @@ public class HtmlParser implements HtmlParserConstants {
   private int jj_la;
   /** Whether we are looking ahead. */
   public boolean lookingAhead = false;
-  private boolean jj_semLA;
+  // Manually commented out
+  // private boolean jj_semLA;
   private int jj_gen;
   final private int[] jj_la1 = new int[11];
   static private int[] jj_la1_0;

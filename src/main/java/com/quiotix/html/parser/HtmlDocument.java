@@ -1,5 +1,5 @@
 /*
- * HtmlDocument.java -- classes to represent HTML documents as parse trees
+ * HtmlDocument.java -- classes to represent HTML documents as parse trees.
  * Copyright (C) 1999 Quiotix Corporation.  
  *
  * This program is free software; you can redistribute it and/or modify

@@ -24,30 +24,38 @@ import java.util.Iterator;
  */
 
 public abstract class HtmlVisitor {
+    /** Visit a Tag. */
     public void visit(HtmlDocument.Tag t) {
     }
 
+    /** Visit an EndTag. */
     public void visit(HtmlDocument.EndTag t) {
     }
 
+    /** Visit a Comment. */
     public void visit(HtmlDocument.Comment c) {
     }
 
+    /** Visit Text. */
     public void visit(HtmlDocument.Text t) {
     }
 
+    /** Visit a Newline. */
     public void visit(HtmlDocument.Newline n) {
     }
 
+    /** Visit an Annotation. */
     public void visit(HtmlDocument.Annotation a) {
     }
 
+    /** Visit a TagBlock. */
     public void visit(HtmlDocument.TagBlock bl) {
         bl.startTag.accept(this);
         visit(bl.body);
         bl.endTag.accept(this);
     }
 
+    /** Visit an ElementSequence. */
     public void visit(HtmlDocument.ElementSequence s) {
         for (Iterator iterator = s.iterator(); iterator.hasNext();) {
             HtmlDocument.HtmlElement htmlElement = (HtmlDocument.HtmlElement) iterator.next();
@@ -55,15 +63,19 @@ public abstract class HtmlVisitor {
         }
     }
 
+    /** Visit an HtmlDocument. */
     public void visit(HtmlDocument d) {
         start();
         visit(d.elements);
         finish();
     }
 
+
+    /** Start. */
     public void start() {
     }
 
+    /** Finish. */
     public void finish() {
     }
 }

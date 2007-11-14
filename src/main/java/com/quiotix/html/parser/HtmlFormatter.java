@@ -78,11 +78,17 @@ public class HtmlFormatter extends HtmlVisitor {
         out.setRightMargin(rightMargin);
     };
 
+    /**
+     * @param margin the right margin column to wrap at
+     */
     public void setRightMargin(int margin) {
         rightMargin = margin;
         out.setRightMargin(rightMargin);
     };
 
+    /**
+     * @param indent the number of spaces to indent by
+     */
     public void setIndent(int indent) {
         indentSize = indent;
     };
@@ -241,21 +247,21 @@ class MarginWriter {
     protected char[] spaces = new char[256];
 
     /** Constructor. */
-    public MarginWriter(java.io.PrintWriter out) {
+    MarginWriter(java.io.PrintWriter out) {
         this.out = out;
         for (int i = 0; i < spaces.length; i++)
             spaces[i] = ' ';
     }
 
-    public void flush() {
+    void flush() {
         out.flush();
     };
 
-    public void close() {
+    void close() {
         out.close();
     };
 
-    public void print(String s) {
+    void print(String s) {
         if (curPosition == 0 && leftMargin > 0) {
             out.write(spaces, 0, leftMargin);
             curPosition = leftMargin;
@@ -264,14 +270,14 @@ class MarginWriter {
         curPosition += s.length();
     }
 
-    public void printAutoWrap(String s) {
+    void printAutoWrap(String s) {
         if (curPosition > leftMargin
                 && curPosition + s.length() > rightMargin)
             println();
         print(s);
     };
 
-    public void printAutoWrap(String s, int hanging) {
+    void printAutoWrap(String s, int hanging) {
         if (curPosition > leftMargin
                 && curPosition + s.length() > rightMargin) {
             println();
@@ -281,33 +287,33 @@ class MarginWriter {
         print(s);
     };
 
-    public void println() {
+    void println() {
         curPosition = 0;
         out.println();
     };
 
-    public void printlnSoft() {
+    void printlnSoft() {
         if (curPosition > 0)
             println();
     };
 
-    public void setLeftMargin(int leftMargin) {
+    void setLeftMargin(int leftMargin) {
         this.leftMargin = leftMargin;
     };
 
-    public int getLeftMargin() {
+    int getLeftMargin() {
         return leftMargin;
     };
 
-    public void setRightMargin(int rightMargin) {
+    void setRightMargin(int rightMargin) {
         this.rightMargin = rightMargin;
     };
 
-    public int getRightMargin() {
+    int getRightMargin() {
         return rightMargin;
     };
 
-    public int getCurPosition() {
+    int getCurPosition() {
         return (curPosition == 0 ? leftMargin : curPosition);
     };
 }
@@ -335,19 +341,19 @@ class TagBlockRenderer extends HtmlVisitor {
     public void finish() {
     };
 
-    public void setTargetWidth(int w) {
+    void setTargetWidth(int w) {
         targetWidth = w;
     }
 
-    public String getString() {
+    String getString() {
         return s;
     }
 
-    public boolean isMultiLine() {
+    boolean isMultiLine() {
         return multiLine;
     }
 
-    public boolean hasBlownTarget() {
+    boolean hasBlownTarget() {
         return blownTarget;
     }
 

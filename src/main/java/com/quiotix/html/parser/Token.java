@@ -114,6 +114,9 @@ public class Token {
      }
   }
 
+  /**
+   * @return a Token of the given kind
+   */
   public static final Token newToken(int ofKind)
   {
      return newToken(ofKind, null);
