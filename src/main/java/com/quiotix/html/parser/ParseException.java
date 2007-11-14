@@ -51,7 +51,7 @@ public class ParseException extends Exception {
     specialConstructor = false;
   }
 
-  /** Constructor. */
+  /** Constructor with message. */
   public ParseException(String message) {
     super(message);
     specialConstructor = false;
@@ -121,7 +121,10 @@ public class ParseException extends Exception {
         retval += tokenImage[0];
         break;
       }
+      retval += " " + tokenImage[tok.kind];
+      retval += " \"";
       retval += add_escapes(tok.image);
+      retval += " \"";
       tok = tok.next; 
     }
     retval += "\" at line " + currentToken.next.beginLine + ", column " + currentToken.next.beginColumn;
