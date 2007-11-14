@@ -76,6 +76,7 @@ public class HtmlParser {
     return sb.toString();
   }
 
+  /** Runnable. */
   public static void main(String[] args) throws ParseException {
     HtmlParser parser = new HtmlParser(System.in);
     HtmlDocument doc = parser.HtmlDocument();
@@ -203,6 +204,7 @@ PARSER_END(HtmlParser)
                    | (~[ "\n", "\r", "'", "\"", "<"])+ ) >
 }
 
+/** Constructor. */
 HtmlDocument HtmlDocument() :
 {
   HtmlDocument.ElementSequence s;
@@ -212,6 +214,7 @@ HtmlDocument HtmlDocument() :
   { return new HtmlDocument(s); }
 }
 
+/** @return a sequence of elements */
 HtmlDocument.ElementSequence ElementSequence() :
 {
   HtmlDocument.ElementSequence s = new HtmlDocument.ElementSequence();
@@ -222,6 +225,7 @@ HtmlDocument.ElementSequence ElementSequence() :
   { return s; }
 }
 
+/** @return an element */
 HtmlDocument.HtmlElement Element() :
 {
   HtmlDocument.HtmlElement e;
@@ -246,6 +250,7 @@ HtmlDocument.HtmlElement Element() :
 )
 }
 
+/** @return an attribute */
 HtmlDocument.Attribute Attribute() : 
 {
   Token t1, t2=null;
@@ -259,6 +264,7 @@ HtmlDocument.Attribute Attribute() :
   }
 }
 
+/** @return an AttributeList */
 HtmlDocument.AttributeList AttributeList() : 
 {
   HtmlDocument.AttributeList alist = new HtmlDocument.AttributeList();
@@ -269,6 +275,7 @@ HtmlDocument.AttributeList AttributeList() :
   { return alist; }
 }
 
+/** @return a tag */
 HtmlDocument.HtmlElement Tag() :
 {
   Token t, et;
@@ -293,6 +300,7 @@ HtmlDocument.HtmlElement Tag() :
 }
 
 
+/** @return the contents of a block */
 HtmlDocument.ElementSequence BlockContents() : {
   Token t;
   StringBuffer s = new StringBuffer();
@@ -317,6 +325,7 @@ HtmlDocument.ElementSequence BlockContents() : {
   }
 }
 
+/** @return the contents of a script block */
 HtmlDocument.HtmlElement ScriptBlock() :
 {
   HtmlDocument.AttributeList alist;
@@ -343,6 +352,7 @@ HtmlDocument.HtmlElement ScriptBlock() :
 }
 
 
+/** @return the contents of a style block */
 HtmlDocument.HtmlElement StyleBlock() :
 {
   HtmlDocument.AttributeList alist;
@@ -369,6 +379,7 @@ HtmlDocument.HtmlElement StyleBlock() :
 }
 
 
+/** @return the end of a tag */
 HtmlDocument.HtmlElement EndTag() :
 {
   Token t;
@@ -386,6 +397,7 @@ HtmlDocument.HtmlElement EndTag() :
   }
 }
 
+/** @return the start of a comment tag */
 HtmlDocument.Comment CommentTag() :
 {
   Token t;
@@ -400,6 +412,7 @@ HtmlDocument.Comment CommentTag() :
   { return new HtmlDocument.Comment(s.append("--").toString()); }
 }
   
+/** @return the start of a declaration */
 HtmlDocument.Comment DeclTag() :
 {
   Token t;

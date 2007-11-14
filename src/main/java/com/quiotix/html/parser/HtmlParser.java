@@ -44,6 +44,7 @@ public class HtmlParser implements HtmlParserConstants {
     return sb.toString();
   }
 
+  /** Runnable. */
   public static void main(String[] args) throws ParseException {
     HtmlParser parser = new HtmlParser(System.in);
     HtmlDocument doc = parser.HtmlDocument();
@@ -51,6 +52,7 @@ public class HtmlParser implements HtmlParserConstants {
     System.exit(0);
   }
 
+/** Constructor. */
   final public HtmlDocument HtmlDocument() throws ParseException {
   HtmlDocument.ElementSequence s;
     s = ElementSequence();
@@ -59,6 +61,7 @@ public class HtmlParser implements HtmlParserConstants {
     throw new Error("Missing return statement in function");
   }
 
+/** @return a sequence of elements */
   final public HtmlDocument.ElementSequence ElementSequence() throws ParseException {
   HtmlDocument.ElementSequence s = new HtmlDocument.ElementSequence();
   HtmlDocument.HtmlElement h;
@@ -84,6 +87,7 @@ public class HtmlParser implements HtmlParserConstants {
     throw new Error("Missing return statement in function");
   }
 
+/** @return an element */
   final public HtmlDocument.HtmlElement Element() throws ParseException {
   HtmlDocument.HtmlElement e;
   Token text;
@@ -137,6 +141,7 @@ public class HtmlParser implements HtmlParserConstants {
     throw new Error("Missing return statement in function");
   }
 
+/** @return an attribute */
   final public HtmlDocument.Attribute Attribute() throws ParseException {
   Token t1, t2=null;
     t1 = jj_consume_token(ATTR_NAME);
@@ -156,6 +161,7 @@ public class HtmlParser implements HtmlParserConstants {
     throw new Error("Missing return statement in function");
   }
 
+/** @return an AttributeList */
   final public HtmlDocument.AttributeList AttributeList() throws ParseException {
   HtmlDocument.AttributeList alist = new HtmlDocument.AttributeList();
   HtmlDocument.Attribute a;
@@ -176,6 +182,7 @@ public class HtmlParser implements HtmlParserConstants {
     throw new Error("Missing return statement in function");
   }
 
+/** @return a tag */
   final public HtmlDocument.HtmlElement Tag() throws ParseException {
   Token t, et;
   HtmlDocument.AttributeList alist;
@@ -207,6 +214,7 @@ public class HtmlParser implements HtmlParserConstants {
     throw new Error("Missing return statement in function");
   }
 
+/** @return the contents of a block */
   final public HtmlDocument.ElementSequence BlockContents() throws ParseException {
   Token t;
   StringBuffer s = new StringBuffer();
@@ -253,6 +261,7 @@ public class HtmlParser implements HtmlParserConstants {
     throw new Error("Missing return statement in function");
   }
 
+/** @return the contents of a script block */
   final public HtmlDocument.HtmlElement ScriptBlock() throws ParseException {
   HtmlDocument.AttributeList alist;
   HtmlDocument.ElementSequence e;
@@ -274,6 +283,7 @@ public class HtmlParser implements HtmlParserConstants {
     throw new Error("Missing return statement in function");
   }
 
+/** @return the contents of a style block */
   final public HtmlDocument.HtmlElement StyleBlock() throws ParseException {
   HtmlDocument.AttributeList alist;
   HtmlDocument.ElementSequence e;
@@ -295,6 +305,7 @@ public class HtmlParser implements HtmlParserConstants {
     throw new Error("Missing return statement in function");
   }
 
+/** @return the end of a tag */
   final public HtmlDocument.HtmlElement EndTag() throws ParseException {
   Token t;
   Token firstToken = getToken(1);
@@ -311,6 +322,7 @@ public class HtmlParser implements HtmlParserConstants {
     throw new Error("Missing return statement in function");
   }
 
+/** @return the start of a comment tag */
   final public HtmlDocument.Comment CommentTag() throws ParseException {
   Token t;
   StringBuffer s = new StringBuffer("--");
@@ -362,6 +374,7 @@ public class HtmlParser implements HtmlParserConstants {
     throw new Error("Missing return statement in function");
   }
 
+/** @return the start of a declaration */
   final public HtmlDocument.Comment DeclTag() throws ParseException {
   Token t;
     jj_consume_token(DECL_START);
@@ -399,20 +412,14 @@ public class HtmlParser implements HtmlParserConstants {
     finally { jj_save(3, xla); }
   }
 
-  private boolean jj_3R_5() {
-    if (jj_scan_token(TAG_START)) return true;
-    if (jj_scan_token(TAG_NAME)) return true;
-    return false;
-  }
-
   private boolean jj_3_1() {
     if (jj_3R_5()) return true;
     return false;
   }
 
-  private boolean jj_3R_7() {
+  private boolean jj_3R_6() {
     if (jj_scan_token(TAG_START)) return true;
-    if (jj_scan_token(TAG_STYLE)) return true;
+    if (jj_scan_token(TAG_SCRIPT)) return true;
     return false;
   }
 
@@ -427,14 +434,20 @@ public class HtmlParser implements HtmlParserConstants {
     return false;
   }
 
-  private boolean jj_3R_6() {
-    if (jj_scan_token(TAG_START)) return true;
-    if (jj_scan_token(TAG_SCRIPT)) return true;
+  private boolean jj_3_2() {
+    if (jj_3R_6()) return true;
     return false;
   }
 
-  private boolean jj_3_2() {
-    if (jj_3R_6()) return true;
+  private boolean jj_3R_7() {
+    if (jj_scan_token(TAG_START)) return true;
+    if (jj_scan_token(TAG_STYLE)) return true;
+    return false;
+  }
+
+  private boolean jj_3R_5() {
+    if (jj_scan_token(TAG_START)) return true;
+    if (jj_scan_token(TAG_NAME)) return true;
     return false;
   }
 
