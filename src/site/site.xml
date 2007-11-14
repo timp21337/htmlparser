@@ -19,12 +19,12 @@
 
   <body>
    <links>
-    <item name="Context Computing" href="http://www.context-computing.co.uk/" />
+    <item name="Context Computing"      href="http://www.context-computing.co.uk/" />
      <item name="PanEris.net"           href="http://www.paneris.net/" />
-     <item name="Quiotix"               href="http://www.quiotix.com/" />
+     <item name="JavaCC"                href="https://javacc.dev.java.net/" />
    </links>
     <menu >
-      <item name="Documentation"       href="/documentation.html"/>
+      <item name="About"       href="/index.html" />
     </menu>
    ${reports}
   </body>
