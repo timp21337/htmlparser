@@ -56,8 +56,8 @@ public class HtmlFormat {
                && i+1 < args.length) {
         rightMargin = (int) Integer.parseInt(args[i+1]);
         i++;
-      };
-    };
+      }
+    }
 
     int scrubberFlags = HtmlScrubber.DEFAULT_OPTIONS 
                         | HtmlScrubber.TRIM_SPACES;
@@ -95,8 +95,8 @@ public class HtmlFormat {
       }
       finally {
         r.close();
-      };
-    };
+      }
+    }
     
   }
 }

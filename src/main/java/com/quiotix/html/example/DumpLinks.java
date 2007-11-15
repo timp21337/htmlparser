@@ -40,7 +40,9 @@ public class DumpLinks extends HtmlVisitor {
     out = new PrintWriter( new OutputStreamWriter(os, encoding) );
   }
 
-  public void finish()                   { out.flush();               }
+  public void finish() { 
+      out.flush();
+  }
 
   public void visit(HtmlDocument.Tag t) { 
     if (t.tagName.equalsIgnoreCase("A")) {

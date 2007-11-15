@@ -10,7 +10,7 @@ import com.quiotix.html.parser.HtmlParser;
 import com.quiotix.html.parser.HtmlScrubber;
 
 /**
- * Simple example class which parses an HTML document, cleans it up a little
+ * Example class which parses an HTML document, cleans it up a little
  * bit, and dumps it to standard out.  Demonstrates use of the parser and 
  * parser utilities.  
  *
@@ -43,8 +43,8 @@ public class HtmlParse {
       }
       finally {
         r.close();
-      };
-    };
+      }
+    }
     
   }
 }

@@ -45,12 +45,12 @@ public class HtmlCollector extends HtmlVisitor {
     static {
         for (int i = 0; i < dontMatchStrings.length; i++)
             dontMatch.add(dontMatchStrings[i]);
-    };
+    }
 
     private static class TagStackEntry {
         String tagName;
         int index;
-    };
+    }
 
     private static class ElementStack extends Vector {
 
@@ -65,24 +65,24 @@ public class HtmlCollector extends HtmlVisitor {
         void popN(int n) {
             elementCount -= n;
         }
-    };
+    }
 
     protected int pushNode(HtmlDocument.HtmlElement e) {
         elements.addElement(e);
         return elements.size() - 1;
-    };
+    }
 
     public void visit(HtmlDocument.Comment c) {
         pushNode(c);
-    };
+    }
 
     public void visit(HtmlDocument.Text t) {
         pushNode(t);
-    };
+    }
 
     public void visit(HtmlDocument.Newline n) {
         pushNode(n);
-    };
+    }
 
     public void visit(HtmlDocument.Tag t) {
         TagStackEntry ts = new TagStackEntry();
@@ -96,8 +96,8 @@ public class HtmlCollector extends HtmlVisitor {
             ts.tagName = t.tagName;
             ts.index = index;
             tagStack.addElement(ts);
-        };
-    };
+        }
+    }
 
     public void visit(HtmlDocument.EndTag t) {
         int i;
@@ -127,13 +127,13 @@ public class HtmlCollector extends HtmlVisitor {
 
                 collected = true;
                 break;
-            };
-        };
+            }
+        }
 
         // If we didn't find a match, just push the end tag
         if (i < 0)
             pushNode(t);
-    };
+    }
 
     public void visit(HtmlDocument.TagBlock bl) {
         HtmlCollector c = new HtmlCollector();
@@ -169,7 +169,7 @@ public class HtmlCollector extends HtmlVisitor {
             document.accept(new HtmlDumper(System.out));
         } finally {
             r.close();
-        };
-    };
+        }
+    }
 }
 
