@@ -34,14 +34,6 @@ private int jjStopAtPos(int pos, int kind)
    jjmatchedPos = pos;
    return pos + 1;
 }
-private int jjStartNfaWithStates_7(int pos, int kind, int state)
-{
-   jjmatchedKind = kind;
-   jjmatchedPos = pos;
-   try { curChar = input_stream.readChar(); }
-   catch(java.io.IOException e) { return pos + 1; }
-   return jjMoveNfa_7(state, pos + 1);
-}
 private int jjMoveStringLiteralDfa0_7()
 {
    switch(curChar)
@@ -202,7 +194,6 @@ private int jjMoveNfa_7(int startState, int curPos)
       }
       else if (curChar < 128)
       {
-         long l = 1L << (curChar & 077);
          do
          {
             switch(jjstateSet[--i])
@@ -260,14 +251,6 @@ private final int jjStopStringLiteralDfa_5(int pos, long active0)
 private final int jjStartNfa_5(int pos, long active0)
 {
    return jjMoveNfa_5(jjStopStringLiteralDfa_5(pos, active0), pos + 1);
-}
-private int jjStartNfaWithStates_5(int pos, int kind, int state)
-{
-   jjmatchedKind = kind;
-   jjmatchedPos = pos;
-   try { curChar = input_stream.readChar(); }
-   catch(java.io.IOException e) { return pos + 1; }
-   return jjMoveNfa_5(state, pos + 1);
 }
 private int jjMoveStringLiteralDfa0_5()
 {
@@ -399,8 +382,6 @@ private int jjMoveNfa_5(int startState, int curPos)
       }
       else
       {
-         int i2 = (curChar & 0xff) >> 6;
-         long l2 = 1L << (curChar & 077);
          do
          {
             switch(jjstateSet[--i])
@@ -440,14 +421,6 @@ private final int jjStopStringLiteralDfa_4(int pos, long active0)
 private final int jjStartNfa_4(int pos, long active0)
 {
    return jjMoveNfa_4(jjStopStringLiteralDfa_4(pos, active0), pos + 1);
-}
-private int jjStartNfaWithStates_4(int pos, int kind, int state)
-{
-   jjmatchedKind = kind;
-   jjmatchedPos = pos;
-   try { curChar = input_stream.readChar(); }
-   catch(java.io.IOException e) { return pos + 1; }
-   return jjMoveNfa_4(state, pos + 1);
 }
 private int jjMoveStringLiteralDfa0_4()
 {
@@ -578,7 +551,6 @@ private int jjMoveNfa_4(int startState, int curPos)
       }
       else if (curChar < 128)
       {
-         long l = 1L << (curChar & 077);
          do
          {
             switch(jjstateSet[--i])
@@ -898,8 +870,6 @@ private int jjMoveNfa_6(int startState, int curPos)
       }
       else
       {
-         int i2 = (curChar & 0xff) >> 6;
-         long l2 = 1L << (curChar & 077);
          do
          {
             switch(jjstateSet[--i])
@@ -939,14 +909,6 @@ private final int jjStopStringLiteralDfa_1(int pos, long active0)
 private final int jjStartNfa_1(int pos, long active0)
 {
    return jjMoveNfa_1(jjStopStringLiteralDfa_1(pos, active0), pos + 1);
-}
-private int jjStartNfaWithStates_1(int pos, int kind, int state)
-{
-   jjmatchedKind = kind;
-   jjmatchedPos = pos;
-   try { curChar = input_stream.readChar(); }
-   catch(java.io.IOException e) { return pos + 1; }
-   return jjMoveNfa_1(state, pos + 1);
 }
 private int jjMoveStringLiteralDfa0_1()
 {
@@ -1219,7 +1181,6 @@ private int jjMoveNfa_1(int startState, int curPos)
       }
       else if (curChar < 128)
       {
-         long l = 1L << (curChar & 077);
          do
          {
             switch(jjstateSet[--i])
@@ -1444,7 +1405,6 @@ private int jjMoveNfa_2(int startState, int curPos)
       }
       else if (curChar < 128)
       {
-         long l = 1L << (curChar & 077);
          do
          {
             switch(jjstateSet[--i])
@@ -1524,14 +1484,6 @@ private final int jjStopStringLiteralDfa_0(int pos, long active0)
 private final int jjStartNfa_0(int pos, long active0)
 {
    return jjMoveNfa_0(jjStopStringLiteralDfa_0(pos, active0), pos + 1);
-}
-private int jjStartNfaWithStates_0(int pos, int kind, int state)
-{
-   jjmatchedKind = kind;
-   jjmatchedPos = pos;
-   try { curChar = input_stream.readChar(); }
-   catch(java.io.IOException e) { return pos + 1; }
-   return jjMoveNfa_0(state, pos + 1);
 }
 private int jjMoveStringLiteralDfa0_0()
 {
@@ -1785,7 +1737,6 @@ private int jjMoveNfa_0(int startState, int curPos)
       }
       else if (curChar < 128)
       {
-         long l = 1L << (curChar & 077);
          do
          {
             switch(jjstateSet[--i])
@@ -2053,7 +2004,6 @@ private int jjMoveNfa_3(int startState, int curPos)
       }
       else if (curChar < 128)
       {
-         long l = 1L << (curChar & 077);
          do
          {
             switch(jjstateSet[--i])
