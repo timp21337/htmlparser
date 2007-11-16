@@ -42,9 +42,9 @@ public class HtmlScrubber extends HtmlVisitor {
     public static final int TRIM_SPACES     = 32;
     /** Quote attributes. */
     public static final int QUOTE_ATTRS     = 64;
-    /** Defaults. */
+    /** Defaults: downcase tags and attributes, quote attributes. */
     public static final int DEFAULT_OPTIONS =
-            TAGS_DOWNCASE | ATTR_DOWNCASE | STRIP_QUOTES;
+            TAGS_DOWNCASE | ATTR_DOWNCASE | QUOTE_ATTRS;
 
     protected int flags;
     protected HtmlDocument.HtmlElement previousElement;
@@ -147,7 +147,7 @@ public class HtmlScrubber extends HtmlVisitor {
         previousElement = t;
     }
 
-    public void visit(HtmlDocument.Text t)        {
+    public void visit(HtmlDocument.Text t) {
         if (((flags & TRIM_SPACES) != 0)
                 && !inPreBlock
                 && (previousElement instanceof HtmlDocument.Newline
@@ -161,7 +161,7 @@ public class HtmlScrubber extends HtmlVisitor {
                     break;
             if (i > 0)
                 t.text = t.text.substring(i);
-        };
+        }
         previousElement = t;
     }
 
