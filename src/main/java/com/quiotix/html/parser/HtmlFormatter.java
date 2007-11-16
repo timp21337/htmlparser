@@ -228,8 +228,8 @@ public class HtmlFormatter extends HtmlVisitor {
             e.printStackTrace();
         } finally {
             r.close();
-        };
-    };
+        }
+    }
 }
 
 

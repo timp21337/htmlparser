@@ -88,7 +88,7 @@ public class HtmlFormat {
           v.setRightMargin(1024);
           v.setIndent(0);
           document.accept(v);
-        };
+        }
       }
       catch (Exception e) {
         e.printStackTrace();
