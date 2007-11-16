@@ -105,7 +105,7 @@ public class HtmlFormatterTest extends TestCase {
     /**
      * Test method for {@link com.quiotix.html.parser.HtmlFormatter#HtmlFormatter(java.io.OutputStream)}.
      */
-    public void testHtmlFormatter() throws Exception {
+    public void testHtmlFormatterTRIM_SPACES() throws Exception {
         String testString = "<html><head><BODy><P class=unquoted>Hi test  " + 
         System.getProperty("line.separator") +
         "<p> Spaces preserved at back but not at front  ";
@@ -123,6 +123,27 @@ public class HtmlFormatterTest extends TestCase {
                 "<p class=\"unquoted\">Hi test   " +
                 System.getProperty("line.separator") + 
                 "<p>Spaces preserved at back but not at front  " , o.toString());
+    }
+    /**
+     * Test method for {@link com.quiotix.html.parser.HtmlFormatter#HtmlFormatter(java.io.OutputStream)}.
+     */
+    public void testHtmlFormatter() throws Exception {
+        String testString = "<html><head><BODy><P class=unquoted>Hi test  " + 
+        System.getProperty("line.separator") +
+        "<p> Spaces preserved  ";
+        InputStream r = new ByteArrayInputStream(testString.getBytes());
+        OutputStream o = new ByteArrayOutputStream();
+        HtmlDocument document;
+
+        document = new HtmlParser(r).HtmlDocument();
+        document.accept(new HtmlScrubber(HtmlScrubber.DEFAULT_OPTIONS));
+        document.accept(new HtmlCollector());
+        document.accept(new HtmlFormatter(o));
+        assertEquals("<html><head><body>" + 
+                System.getProperty("line.separator") + 
+                "<p class=\"unquoted\">Hi test   " +
+                System.getProperty("line.separator") + 
+                "<p> Spaces preserved  " , o.toString());
     }
 
     /**
