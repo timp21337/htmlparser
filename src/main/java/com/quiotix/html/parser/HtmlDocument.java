@@ -23,7 +23,7 @@ import java.util.List;
  * Represents an HTML document as a sequence of elements.  The defined
  * element types are: Tag, EndTag, TagBlock (matched tag..end tag, with the
  * intervening elements), Comment, Text, Newline, and Annotation.
- * <P>
+ * <p>
  * The various element types are defined as nested classes within
  * HtmlDocument.
  * </p>
@@ -46,7 +46,8 @@ public class HtmlDocument implements Visitable {
     private static String dequote(String s) {
         if (s == null)
             return "";
-        if ((s.startsWith("\"") && s.endsWith("\"")) || (s.startsWith("'") && s.endsWith("'")))
+        if ((s.startsWith("\"") && s.endsWith("\"")) || 
+            (s.startsWith("'") && s.endsWith("'")))
             return s.substring(1, s.length()-1);
         else
             return s;
@@ -382,7 +383,7 @@ public class HtmlDocument implements Visitable {
     public static class Attribute implements Sized {
         /** The name of this Attribute. */
         public String name;
-        /** The value of this Attribute. */
+        /** The value of this Attribute, including any surrounding quotes. */
         public String value;
         /** Whether the Attribute has a value. */
         public boolean hasValue;
@@ -396,16 +397,42 @@ public class HtmlDocument implements Visitable {
         /** Constructor. */
         public Attribute(String n, String v) {
             name = n;
-            value = v;
-            hasValue = true;
+            if (v != null) {
+                value = v;
+                hasValue = true;
+            }
         }
 
+        /** 
+         * Whether quotes are included is dependant upon the source document.
+         * 
+         * {@inheritDoc}
+         * @see com.quiotix.html.parser.Sized#getLength()
+         */
         public int getLength() {
             return (hasValue ? name.length() + 1 + value.length() : name.length());
         }
 
         public String toString() {
             return (hasValue ? name + "=" + value : name);
+        }
+        
+        /**
+         * @return the value with quotes removed
+         */
+        public String getValue() { 
+            return dequote(value);
+        }
+        
+        /**
+         * @param v the value to set, may be null
+         */
+        public void setValue(String v) {
+            value = v;
+            if (v == null)  
+                hasValue = false;
+            else 
+                hasValue = true;
         }
     }
 
