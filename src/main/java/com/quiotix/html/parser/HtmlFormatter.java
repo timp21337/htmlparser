@@ -32,9 +32,10 @@ import java.util.Set;
  * consistent way).  In particular, HtmlScrubber should be invoked with the
  * TRIM_SPACES option to remove trailing spaces, which can confuse the
  * formatting algorithm.
- * <p/>
- * <P>The right margin and indent increment can be specified as properties.
- *
+ * <p>
+ * The right margin and indent increment can be specified as properties.
+ * </p>
+ * 
  * @author Brian Goetz, Quiotix
  * @see com.quiotix.html.parser.HtmlVisitor
  * @see com.quiotix.html.parser.HtmlCollector
@@ -67,7 +68,7 @@ public class HtmlFormatter extends HtmlVisitor {
             tagsPreformatted.add(tagsPreformattedStrings[i]);
         for (int i = 0; i < tagsTryMatchStrings.length; i++)
             tagsTryMatch.add(tagsTryMatchStrings[i]);
-    };
+    }
     protected TagBlockRenderer blockRenderer = new TagBlockRenderer();
     protected HtmlDocument.HtmlElement previousElement;
     protected boolean inPreBlock;
@@ -76,7 +77,7 @@ public class HtmlFormatter extends HtmlVisitor {
     public HtmlFormatter(OutputStream os) throws Exception {
         out = new MarginWriter(new PrintWriter(new BufferedOutputStream(os)));
         out.setRightMargin(rightMargin);
-    };
+    }
 
     /**
      * @param margin the right margin column to wrap at
@@ -84,14 +85,14 @@ public class HtmlFormatter extends HtmlVisitor {
     public void setRightMargin(int margin) {
         rightMargin = margin;
         out.setRightMargin(rightMargin);
-    };
+    }
 
     /**
      * @param indent the number of spaces to indent by
      */
     public void setIndent(int indent) {
         indentSize = indent;
-    };
+    }
 
     public void visit(HtmlDocument.TagBlock block) {
         boolean indent;
@@ -153,7 +154,7 @@ public class HtmlFormatter extends HtmlVisitor {
         for (Iterator it = t.attributeList.attributes.iterator(); it.hasNext();) {
             HtmlDocument.Attribute a = (HtmlDocument.Attribute) it.next();
             out.printAutoWrap(" " + a.toString(), hanging);
-        };
+        }
         if (t.emptyTag) out.print("/");
         out.print(">");
         previousElement = t;
@@ -164,7 +165,7 @@ public class HtmlFormatter extends HtmlVisitor {
         if (tagsNewlineBefore.contains(t.tagName.toUpperCase())) {
             out.printlnSoft();
             out.println();
-        };
+        }
         previousElement = t;
     }
 
@@ -184,8 +185,8 @@ public class HtmlFormatter extends HtmlVisitor {
                     index = t.text.length();
                 out.printAutoWrap(t.text.substring(start, index));
                 start = index;
-            };
-        };
+            }
+        }
         previousElement = t;
     }
 
@@ -205,11 +206,11 @@ public class HtmlFormatter extends HtmlVisitor {
     public void start() {
         previousElement = null;
         inPreBlock = false;
-    };
+    }
 
     public void finish() {
         out.flush();
-    };
+    }
 
     /**
      * Runnable.
@@ -255,17 +256,17 @@ class MarginWriter {
 
     void flush() {
         out.flush();
-    };
+    }
 
     void close() {
         out.close();
-    };
+    }
 
     void print(String s) {
         if (curPosition == 0 && leftMargin > 0) {
             out.write(spaces, 0, leftMargin);
             curPosition = leftMargin;
-        };
+        }
         out.print(s);
         curPosition += s.length();
     }
@@ -275,7 +276,7 @@ class MarginWriter {
                 && curPosition + s.length() > rightMargin)
             println();
         print(s);
-    };
+    }
 
     void printAutoWrap(String s, int hanging) {
         if (curPosition > leftMargin
@@ -285,37 +286,37 @@ class MarginWriter {
             curPosition = leftMargin + hanging;
         };
         print(s);
-    };
+    }
 
     void println() {
         curPosition = 0;
         out.println();
-    };
+    }
 
     void printlnSoft() {
         if (curPosition > 0)
             println();
-    };
+    }
 
     void setLeftMargin(int leftMargin) {
         this.leftMargin = leftMargin;
-    };
+    }
 
     int getLeftMargin() {
         return leftMargin;
-    };
+    }
 
     void setRightMargin(int rightMargin) {
         this.rightMargin = rightMargin;
-    };
+    }
 
     int getRightMargin() {
         return rightMargin;
-    };
+    }
 
     int getCurPosition() {
         return (curPosition == 0 ? leftMargin : curPosition);
-    };
+    }
 }
 
 /**
@@ -339,7 +340,7 @@ class TagBlockRenderer extends HtmlVisitor {
     }
 
     public void finish() {
-    };
+    }
 
     void setTargetWidth(int w) {
         targetWidth = w;

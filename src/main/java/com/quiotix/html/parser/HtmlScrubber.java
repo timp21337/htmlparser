@@ -77,11 +77,11 @@ public class HtmlScrubber extends HtmlVisitor {
                 ++upperCount;
             else if (Character.isLowerCase(c))
                 ++lowerCount;
-        };
+        }
         return (qs.length()-2 > 0
                 && (qs.length()-2 == idCount
                 && (upperCount == 0 || lowerCount == 0)));
-    };
+    }
 
     private static boolean isSingleQuoted(String s) {
       if (s.charAt(0) =='\'' && s.charAt(s.length()-1) == '\'') {
@@ -104,7 +104,7 @@ public class HtmlScrubber extends HtmlVisitor {
     public void start() {
         previousElement = null;
         inPreBlock = false;
-    };
+    }
 
     public void visit(HtmlDocument.Tag t) {
         if ((flags & TAGS_UPCASE) != 0)
