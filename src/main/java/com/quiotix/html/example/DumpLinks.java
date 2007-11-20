@@ -49,22 +49,9 @@ public class DumpLinks extends HtmlVisitor {
       for (Iterator i=t.attributeList.attributes.iterator(); i.hasNext(); ) {
         Attribute a = (Attribute) i.next();
         if (a.name.equalsIgnoreCase("HREF"))
-          System.out.println(deQuote(a.value));
+          out.println(a.getValue());
       }
     }
-  }
-
-  /**
-   * Remove quotes from a String if it starts and ends with one. 
-   * 
-   * @param s String to remove quotes from
-   * @return the input with starting and ending quotes removed
-   */
-  public static String deQuote(String s) {
-    if (s.startsWith("\"") && s.endsWith("\""))
-      return s.substring(1, s.length() - 1);
-    else
-      return s;
   }
 
   /**
