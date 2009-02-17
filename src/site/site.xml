@@ -19,6 +19,7 @@
 
   <body>
    <links>
+    <item name="Maven2 Repo"            href="/maven2" />
     <item name="Context Computing"      href="http://www.context-computing.co.uk/" />
      <item name="PanEris.net"           href="http://www.paneris.net/" />
      <item name="JavaCC"                href="https://javacc.dev.java.net/" />
