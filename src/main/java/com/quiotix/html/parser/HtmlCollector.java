@@ -53,6 +53,7 @@ public class HtmlCollector extends HtmlVisitor {
     }
 
     private static class ElementStack extends Vector {
+      private static final long serialVersionUID = 3718394150667677113L;
 
         ElementStack() {
             super();

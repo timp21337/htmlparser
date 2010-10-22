@@ -4,12 +4,13 @@ package com.quiotix.html.parser;
 /** Token Manager Error. */
 public class TokenMgrError extends Error
 {
+  private static final long serialVersionUID = -4011811811402326335L;
 
    /*
     * Ordinals for various reasons why an Error of this type can be thrown.
     */
 
-   /**
+  /**
     * Lexical error occurred.
     */
    static final int LEXICAL_ERROR = 0;

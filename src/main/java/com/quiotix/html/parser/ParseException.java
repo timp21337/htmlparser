@@ -11,6 +11,7 @@ package com.quiotix.html.parser;
  * mechanisms so long as you retain the public fields.
  */
 public class ParseException extends Exception {
+  private static final long serialVersionUID = -3135142198035716513L;
 
   /**
    * This constructor is used by the method "generateParseException"
