@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
 <project name="htmlparser">
 
+<!--
   <skin>
     <groupId>org.melati</groupId>
     <artifactId>melati-skin</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0</version>
   </skin>
+-->
   <bannerLeft>
-    <name>Quiotix</name>
-    <src>http://www.quiotix.com/logo-p.gif</src> 
-    <href>http://www.quiotix.com/</href>
+    <name>GitHub</name>
+    <src>http://assets.github.com/images/modules/header/logov6-hover.svg</src> 
+    <href>https://github.com/timp21337/htmlparser</href>
   </bannerLeft>
   <bannerRight>
     <name>PanEris</name>
@@ -19,7 +21,7 @@
 
   <body>
    <links>
-    <item name="Maven2 Repo"            href="/maven2" />
+    <item name="Maven2 Repo"            href="http://paneris.net/maven2" />
     <item name="Context Computing"      href="http://www.context-computing.co.uk/" />
      <item name="PanEris.net"           href="http://www.paneris.net/" />
      <item name="JavaCC"                href="https://javacc.dev.java.net/" />
